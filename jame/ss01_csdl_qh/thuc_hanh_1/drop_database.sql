@@ -1,0 +1,1 @@
+drop database thuc_hanh_1_2;
