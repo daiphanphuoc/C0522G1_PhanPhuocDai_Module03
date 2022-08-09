@@ -119,7 +119,7 @@ values
     
 CREATE TABLE IF NOT EXISTS `kieu_thue` (
     `ma_kieu_thue` INT PRIMARY KEY,
-    `ten_kieu_thue` VARCHAR(45)
+    `ten_kieu_thue` VARCHAR(45) not null
 );
 
 insert into kieu_thue
