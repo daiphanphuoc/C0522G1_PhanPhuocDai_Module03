@@ -1,1 +1,1 @@
-create database `thuc_hanh_1_2`;
+create database thuc_hanh_1_2;

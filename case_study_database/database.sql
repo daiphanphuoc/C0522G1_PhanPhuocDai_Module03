@@ -1,10 +1,10 @@
-CREATE DATABASE if not exists `furama`;
+CREATE DATABASE if not exists furama;
 
-USE `furama`;
+USE furama;
 
-CREATE TABLE IF NOT EXISTS `loai_khach` (
-    `ma_loai_khach` INT  PRIMARY KEY,
-    `ten_loai_khach` VARCHAR(45) NOT NULL
+CREATE TABLE IF NOT EXISTS loai_khach (
+ma_loai_khach INT  PRIMARY KEY,
+    ten_loai_khach VARCHAR(45) NOT NULL
 );
 
 insert into loai_khach 
@@ -15,16 +15,16 @@ values(1,'Diamond'),
 (5,'Member');
 
 
-CREATE TABLE `khach_hang` (
-	`ma_khach_hang` INT  PRIMARY KEY,
-    `ma_loai_khach` INT ,
-    `ho_ten` VARCHAR(45),
-    `ngay_sinh` DATE,
-    `gioi_tinh` BIT(1),
-    `so_cccd` VARCHAR(12),
-    `so_dien_thoai` VARCHAR(20),
-    `email` VARCHAR(45),
-    `dia_chi` VARCHAR(45),
+CREATE TABLE khach_hang (
+	ma_khach_hang INT  PRIMARY KEY,
+    ma_loai_khach INT ,
+    ho_ten VARCHAR(45),
+    ngay_sinh DATE,
+    gioi_tinh BIT(1),
+    so_cccd VARCHAR(12),
+    so_dien_thoai VARCHAR(20),
+    email VARCHAR(45),
+    dia_chi VARCHAR(45),
      FOREIGN KEY (`ma_loai_khach`)
         REFERENCES `loai_khach`(`ma_loai_khach`)
 );
@@ -42,9 +42,9 @@ values
 (9,'Trần Đại Danh','1994-07-01',1,'432341235','0643343433','24 Lý Thường Kiệt, Quảng Ngãi','danhhai99@gmail.com',1),
 (10,'Nguyễn Tâm Đắc','1989-07-01',1,'344343432','0987654321','22 Ngô Quyền, Đà Nẵng','dactam@gmail.com',2);
 
-CREATE TABLE IF NOT EXISTS `vi_tri` (
-    `ma_vi_tri` INT PRIMARY KEY,
-    `ten_vi_tri` VARCHAR(45)
+CREATE TABLE IF NOT EXISTS vi_tri (
+    ma_vi_tri INT PRIMARY KEY,
+    ten_vi_tri VARCHAR(45)
 );
 
 insert into vi_tri
@@ -52,9 +52,9 @@ values
 (1,'Quản Lý'),
 (2,'Nhân Viên');
 
-CREATE TABLE IF NOT EXISTS `trinh_do` (
-    `ma_trinh_do` INT PRIMARY KEY,
-    `ten_trinh_do` VARCHAR(45)
+CREATE TABLE IF NOT EXISTS trinh_do (
+    ma_trinh_do INT PRIMARY KEY,
+    ten_trinh_do VARCHAR(45)
 );
 
 insert into trinh_do
@@ -64,9 +64,9 @@ values
 (3,'Đại Học'),
 (4,'Sau Đại Học');
 
-CREATE TABLE IF NOT EXISTS `bo_phan` (
-    `ma_bo_phan` INT PRIMARY KEY,
-    `ten_bo_phan` VARCHAR(50)
+CREATE TABLE IF NOT EXISTS bo_phan (
+    ma_bo_phan INT PRIMARY KEY,
+    ten_bo_phan VARCHAR(50)
 );
 
 insert into bo_phan
@@ -76,21 +76,21 @@ values
 (3,'Phục vụ'),
 (4,'Quản lý');
 
-CREATE TABLE IF NOT EXISTS `nhan_vien` (
-    `ma_nhan_vien` INT PRIMARY KEY,
-    `ho_ten` VARCHAR(45),
-    `ngay_sinh` DATE,
-    `so_cccd` VARCHAR(12),
-    `luong` DOUBLE,
-    `so_dien_thoai` VARCHAR(15),
-    `email` VARCHAR(45),
-    `dia_chi` VARCHAR(45),
-    `ma_vi_tri` INT,
-    foreign key(`ma_vi_tri`) REFERENCES `vi_tri` (`ma_vi_tri`),
-    `ma_trinh_do` INT,
-    foreign key(`ma_trinh_do`) REFERENCES `trinh_do` (`ma_trinh_do`),
-    `ma_bo_phan` INT, 
-    foreign key(`ma_bo_phan`) REFERENCES `bo_phan` (`ma_bo_phan`)
+CREATE TABLE IF NOT EXISTS nhan_vien (
+    ma_nhan_vien INT PRIMARY KEY,
+    ho_ten VARCHAR(45),
+    ngay_sinh DATE,
+    so_cccd VARCHAR(12),
+    luong DOUBLE,
+    so_dien_thoai VARCHAR(15),
+    email VARCHAR(45),
+    dia_chi VARCHAR(45),
+    ma_vi_tri INT,
+    foreign key(ma_vi_tri) REFERENCES vi_tri (ma_vi_tri),
+    ma_trinh_do INT,
+    foreign key(ma_trinh_do) REFERENCES trinh_do (ma_trinh_do),
+    ma_bo_phan INT, 
+    foreign key(ma_bo_phan) REFERENCES bo_phan (ma_bo_phan)
 );
 
 insert into nhan_vien
@@ -106,8 +106,8 @@ values
 (9,'Tòng Hoang','1982-09-03','256781231',6000000,'0245144444','hoangtong@gmail.com','213 Hàm Nghi, Đà Nẵng',2,4,4),
 (10,'Nguyễn Công Đạo','1994-01-08','755434343',8000000,'0988767111','nguyencongdao@gmail.com','6 Hoà Khánh, Đồng Nai',2,3,2);
     
-CREATE TABLE IF NOT EXISTS `loai_dich_vu` (
-    `ma_loai_dich_vu` INT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS loai_dich_vu (
+    ma_loai_dich_vu INT PRIMARY KEY,
     ten_loai_dich_vu VARCHAR(45)
 );
 
@@ -117,9 +117,9 @@ values
 (2,'House'),
 (3,'Room');
     
-CREATE TABLE IF NOT EXISTS `kieu_thue` (
-    `ma_kieu_thue` INT PRIMARY KEY,
-    `ten_kieu_thue` VARCHAR(45) not null
+CREATE TABLE IF NOT EXISTS kieu_thue (
+    ma_kieu_thue INT PRIMARY KEY,
+    ten_kieu_thue VARCHAR(45) not null
 );
 
 insert into kieu_thue
@@ -129,21 +129,21 @@ values
 (3,'day'),
 (4,'hour');
     
-CREATE TABLE IF NOT EXISTS `dich_vu` (
-    `ma_dich_vu` INT PRIMARY KEY,
-    `ten_dich_vu` VARCHAR(45),
-    `dien_tich` INT,
-    `chi_phi_thue` DOUBLE,
-    `so_nguoi_toi_da` INT,
-    `ma_kieu_thue` INT,
-    foreign key(`ma_kieu_thue`) REFERENCES `kieu_thue` (`ma_kieu_thue`),
-    `ma_loai_dich_vu` INT,
-    foreign key(`ma_loai_dich_vu`) REFERENCES `loai_dich_vu` (`ma_loai_dich_vu`),
-    `tieu_chuan_phong` VARCHAR(45),
-    `mo_ta_tien_nghi_khac` VARCHAR(45),
-    `dien_tich_ho_boi` DOUBLE,
-    `so_tang` INT,
-    `dich_vu_mien_phi_di_kem` TEXT
+CREATE TABLE IF NOT EXISTS dich_vu (
+    ma_dich_vu INT PRIMARY KEY,
+    ten_dich_vu VARCHAR(45),
+    dien_tich INT,
+    chi_phi_thue DOUBLE,
+    so_nguoi_toi_da INT,
+    ma_kieu_thue INT,
+    foreign key(ma_kieu_thue) REFERENCES kieu_thue (ma_kieu_thue),
+    ma_loai_dich_vu INT,
+    foreign key(ma_loai_dich_vu) REFERENCES loai_dich_vu (ma_loai_dich_vu),
+    tieu_chuan_phong VARCHAR(45),
+    mo_ta_tien_nghi_khac VARCHAR(45),
+    dien_tich_ho_boi DOUBLE,
+    so_tang INT,
+    dich_vu_mien_phi_di_kem TEXT
 );
 
 INSERT INTO dich_vu(ma_dich_vu,ten_dich_vu,dien_tich,chi_phi_thue,so_nguoi_toi_da,tieu_chuan_phong,mo_ta_tien_nghi_khac,dien_tich_ho_boi,so_tang,dich_vu_mien_phi_di_kem,ma_kieu_thue,ma_loai_dich_vu)
@@ -156,16 +156,16 @@ VALUES
 (6,'Room Twin 02',3000,900000,2,'normal','Có tivi',null,null,'1 Xe máy',4,3);
     
   create table if not exists `hop_dong`(
-	`ma_hop_dong` int primary key,
-    `ngay_lam_hop_dong` datetime,
-    `ngay_ket_thuc` datetime,
-    `tien_dat_coc` double,
-    `ma_nhan_vien` int,
-    foreign key(`ma_nhan_vien`) references `nhan_vien`(`ma_nhan_vien`),
-    `ma_khach_hang` int,
-    foreign key(`ma_khach_hang`) references `khach_hang`(`ma_khach_hang`),
-    `ma_dich_vu` int,
-    foreign key(`ma_dich_vu`) references `dich_vu`(`ma_dich_vu`)
+	ma_hop_dong int primary key,
+    ngay_lam_hop_dong datetime,
+    ngay_ket_thuc datetime,
+    tien_dat_coc double,
+    ma_nhan_vien int,
+    foreign key(ma_nhan_vien) references nhan_vien(ma_nhan_vien),
+    ma_khach_hang int,
+    foreign key(ma_khach_hang) references khach_hang(ma_khach_hang),
+    ma_dich_vu int,
+    foreign key(ma_dich_vu) references dich_vu(ma_dich_vu)
   );
   
   INSERT INTO hop_dong
@@ -183,12 +183,12 @@ VALUES
 (11,'2021-04-25','2021-04-25',0,2,2,1),
 (12,'2021-05-25','2021-05-27',0,7,10,1);
   
-CREATE TABLE IF NOT EXISTS `dich_vu_di_kem` (
-    `ma_dich_vu_di_kem` INT PRIMARY KEY,
-    `ten_dich_vu_di_kem` VARCHAR(45),
-    `gia` DOUBLE,
-    `don_vi` VARCHAR(10),
-    `trang_thai` VARCHAR(45)
+CREATE TABLE IF NOT EXISTS dich_vu_di_kem (
+    ma_dich_vu_di_kem INT PRIMARY KEY,
+    ten_dich_vu_di_kem VARCHAR(45),
+    gia DOUBLE,
+    don_vi VARCHAR(10),
+    trang_thai VARCHAR(45)
 );
 
 INSERT INTO dich_vu_di_kem
@@ -201,13 +201,13 @@ VALUES
 (6,'Buffet buổi tối',16000,'suất','đầy đủ đồ ăn, tráng miệng');
 
  
-CREATE TABLE IF NOT EXISTS `hop_dong_chi_tiet` (
-    `ma_hop_dong_chi_tiet` INT PRIMARY KEY,
-    `ma_hop_dong` INT,
-    foreign key(`ma_hop_dong`) REFERENCES `hop_dong` (`ma_hop_dong`),
-    `ma_dich_vu_di_kem` INT,
-    foreign key(`ma_dich_vu_di_kem`) REFERENCES `dich_vu_di_kem` (`ma_dich_vu_di_kem`),
-    `so_luong` INT
+CREATE TABLE IF NOT EXISTS hop_dong_chi_tiet (
+ma_hop_dong_chi_tiet INT PRIMARY KEY,
+    ma_hop_dong INT,
+    foreign key(ma_hop_dong) REFERENCES hop_dong (ma_hop_dong),
+    ma_dich_vu_di_kem INT,
+    foreign key(ma_dich_vu_di_kem) REFERENCES dich_vu_di_kem (ma_dich_vu_di_kem),
+    so_luong INT
 );
 
 INSERT INTO hop_dong_chi_tiet(ma_hop_dong_chi_tiet,so_luong,ma_hop_dong,ma_dich_vu_di_kem)
