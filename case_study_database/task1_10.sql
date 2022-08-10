@@ -7,6 +7,11 @@ có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K
 select *
 from nhan_vien
 where char_length(ho_ten)<=15 and (ho_ten like 'H%' or ho_ten like 'K%' or ho_ten like 'T%');
+use furama;
+
+select *
+from nhan_vien
+where (ho_ten like '[HKT]%') and char_length(ho_ten)<=15 ;
 
 select *
 from nhan_vien
@@ -19,6 +24,7 @@ có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵn
 
 select *
 from khach_hang
+-- where (dia_chi like '%Đà Nẵng' or dia_chi like '%Quảng Trị') and ( select (datediff(curdate(), ngay_sinh)/365) between 18 and 50);
 where (dia_chi like '%Đà Nẵng' or dia_chi like '%Quảng Trị') and ( select (datediff(curdate(), ngay_sinh)/365) between 18 and 50);
 
 /*task4

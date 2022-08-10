@@ -18,7 +18,7 @@ CREATE TABLE `order` (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT NOT NULL,
     order_date DATE,
-    order_total_price DOUBLE,
+    order_price DOUBLE,
     FOREIGN KEY (customer_id)
         REFERENCES customer (customer_id)
 );

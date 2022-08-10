@@ -11,9 +11,12 @@ create table if not exists class(
 
 create table if not exists student(
 	student_id int auto_increment not null primary key,
-    sub_name varchar(30) not null,
-    credit tinyint not null default 1 check( credit>=1),
-    status bit default 1
+    student_name varchar(30) not null,
+    address varchar(50),
+    phone varchar(20),
+    status bit default 1,
+	class_id int ,
+    foreign key(class_id) references class(class_id)
 );
 
 create table if not exists `subject`(
