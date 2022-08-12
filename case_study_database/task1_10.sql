@@ -14,13 +14,7 @@ WHERE
         OR ho_ten LIKE 'T%');
 
 
-SELECT 
-    *
-FROM
-    nhan_vien
-WHERE
-    (ho_ten LIKE '[HKT]%')
-        AND CHAR_LENGTH(ho_ten) <= 15;
+
 
 SELECT 
     *
