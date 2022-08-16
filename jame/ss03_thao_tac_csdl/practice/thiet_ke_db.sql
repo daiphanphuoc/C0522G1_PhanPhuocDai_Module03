@@ -1,47 +1,52 @@
 create database if not exists c0522g1;
 use c0522g1;
-create table class_type(
-id int primary key auto_increment,
-name varchar(50)
+CREATE TABLE class_type (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50)
 );
-create table class(
-id int primary key auto_increment,
-name varchar(50),
-class_type_id int,
-foreign key(class_type_id) references class_type(id)
+CREATE TABLE class (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    class_type_id INT,
+    FOREIGN KEY (class_type_id)
+        REFERENCES class_type (id)
 );
-create table jame (
-`account` varchar(50),
-`password` varchar(25),
-primary key (`account`)
+CREATE TABLE jame (
+    `account` VARCHAR(50),
+    `password` VARCHAR(25),
+    PRIMARY KEY (`account`)
 );
-create table student(
- id int primary key auto_increment,
- name varchar(50),
- birthday date,
- gender boolean,
- email varchar(50),
- point int,
- `account` varchar(50),
- class_id int,
- foreign key(`account`) references jame(`account`),
- foreign key(class_id) references class(id)
- )
+CREATE TABLE student (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    birthday DATE,
+    gender BOOLEAN,
+    email VARCHAR(50),
+    point INT,
+    `account` VARCHAR(50),
+    class_id INT,
+    FOREIGN KEY (`account`)
+        REFERENCES jame (`account`),
+    FOREIGN KEY (class_id)
+        REFERENCES class (id)
+)
 ;
-create table instructor(
- id int primary key auto_increment,
- name varchar(50),
- birthday date,
- salary float
+CREATE TABLE instructor (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    birthday DATE,
+    salary FLOAT
 );
 
-create table instructor_class(
-class_id int,
-instructor_id int,
-start_time date,
-primary key(class_id,instructor_id),
-foreign key(class_id) references class(id),
-foreign key(instructor_id) references instructor(id)
+CREATE TABLE instructor_class (
+    class_id INT,
+    instructor_id INT,
+    start_time DATE,
+    PRIMARY KEY (class_id , instructor_id),
+    FOREIGN KEY (class_id)
+        REFERENCES class (id),
+    FOREIGN KEY (instructor_id)
+        REFERENCES instructor (id)
 );
 
 
@@ -78,56 +83,101 @@ insert into instructor(`name`,birthday, salary)
  
  
  /*Lấy ra thông tin các học viên, và cho biết các học viên đang theo học lớp nào*/
-  select student.id, student.`name`, birthday, gender, email, `point`, `account`, class_id, class.`name`
- from student 
-  join class on class.id=student.class_id;
+  SELECT 
+    student.id,
+    student.`name`,
+    birthday,
+    gender,
+    email,
+    `point`,
+    `account`,
+    class_id,
+    class.`name`
+FROM
+    student
+        JOIN
+    class ON class.id = student.class_id;
   
   
  /*Lấy ra thông tin các học viên, và cho biết các học viên đang theo học lớp nào 
  và cả các bạn đã đăng ký nhưng chưa có lớp học.*/
- select student.id, student.`name`, birthday, gender, email, `point`, `account`, class_id, class.`name`
- from student 
- left join class on class.id=student.class_id;
+ SELECT 
+    student.id,
+    student.`name`,
+    birthday,
+    gender,
+    email,
+    `point`,
+    `account`,
+    class_id,
+    class.`name`
+FROM
+    student
+        LEFT JOIN
+    class ON class.id = student.class_id;
  
 
 /*Lấy thông tin của các học viên tên 'Tien' và 'Toan’.*/
-select *
-from student
-where `name` like '%nam' or `name` like '%Toan';
+SELECT 
+    *
+FROM
+    student
+WHERE
+    `name` LIKE '%nam'
+        OR `name` LIKE '%Toan';
 
 /*5. Lấy ra học viên có điểm lớn hơn 5 .*/
-select *
-from student 
-where `point` >5;
+SELECT 
+    *
+FROM
+    student
+WHERE
+    `point` > 5;
 
 /*6. Lấy ra học viên có họ là “nguyen”*/
-select *
-from student 
-where `name` like 'nguyen%';
+SELECT 
+    *
+FROM
+    student
+WHERE
+    `name` LIKE 'nguyen%';
 
 
 /*Thông kế số lượng học sinh theo từng loại điểm.*/
-select `point`, count(id) as so_luong
-from student 
-group by `point`;
+SELECT 
+    `point`, COUNT(id) AS so_luong
+FROM
+    student
+GROUP BY `point`;
 
 
 /*8 . Thông kế số lượng học sinh theo điểm và điểm phải lớn hơn 5*/
-select `point`, count(id) as so_luong
-from student 
-where `point`>5
-group by `point`;
+SELECT 
+    `point`, COUNT(id) AS so_luong
+FROM
+    student
+WHERE
+    `point` > 5
+GROUP BY `point`;
 
 /*9. Thông kế số lượng học sinh theo điểm lớn hơn 5 và chỉ hiện thị với số lượng>=2*/
-select `point`, count(id) as so_luong
-from student 
-where `point`>5 
-group by `point`
-having count(id)>=2;
+SELECT 
+    `point`, COUNT(id) AS so_luong
+FROM
+    student
+WHERE
+    `point` > 5
+GROUP BY `point`
+HAVING COUNT(id) >= 2;
 
 /*10. Lấy ra danh sách học viên của lớp c1121g1 và sắp xếp tên học viên theo alphabet.*/
-select *
-from student inner join class on student.class_id=class.id
-where class.`name` ='c1121g1'
-order by student.`name` asc;
+SELECT 
+    *
+FROM
+    student
+        INNER JOIN
+    class ON student.class_id = class.id
+WHERE
+    class.`name` = 'c1121g1'
+ORDER BY student.`name` ASC;
 

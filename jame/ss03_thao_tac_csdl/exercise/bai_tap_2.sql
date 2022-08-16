@@ -34,24 +34,47 @@ select order_id , order_date, order_price
 from `order`;
 
 /*Hiển thị danh sách các khách hàng đã mua hàng, và danh sách sản phẩm được mua bởi các khách*/
- select customer.customer_id as ID, customer_name as `Name`, customer_age as Age,  product_name as Product, product_price as Price
- from customer inner join `order` on customer.customer_id=`order`.customer_id
- inner join order_detail on order_detail.order_id=`order`.order_id
- inner join product on product.product_id = order_detail.product_id;
+ SELECT 
+    customer.customer_id AS ID,
+    customer_name AS `Name`,
+    customer_age AS Age,
+    product_name AS Product,
+    product_price AS Price
+FROM
+    customer
+        INNER JOIN
+    `order` ON customer.customer_id = `order`.customer_id
+        INNER JOIN
+    order_detail ON order_detail.order_id = `order`.order_id
+        INNER JOIN
+    product ON product.product_id = order_detail.product_id;
  
  /*
 Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào*/
-select *
-from customer
-where customer.customer_id not in(select distinct customer_id from `order` );
+SELECT 
+    *
+FROM
+    customer
+WHERE
+    customer.customer_id NOT IN (SELECT DISTINCT
+            customer_id
+        FROM
+            `order`);
 
 /*
 Hiển thị mã hóa đơn, ngày bán và giá tiền của từng hóa đơn 
 (giá một hóa đơn được tính bằng tổng giá bán
  của từng loại mặt hàng xuất hiện trong hóa đơn.
  Giá bán của từng loại được tính = odQTY*pPrice)*/
- select `order`.order_id, order_date, ifnull(product_price,0)*ifnull(od_qty,0) as order_price
- from `order` inner join order_detail on `order`.order_id=order_detail.order_id
- inner join product on order_detail.product_id=product.product_id
- group by `order`.order_id;
+ SELECT 
+    `order`.order_id,
+    order_date,
+    IFNULL(product_price, 0) * IFNULL(od_qty, 0) AS order_price
+FROM
+    `order`
+        INNER JOIN
+    order_detail ON `order`.order_id = order_detail.order_id
+        INNER JOIN
+    product ON order_detail.product_id = product.product_id
+GROUP BY `order`.order_id;
  

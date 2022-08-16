@@ -46,24 +46,33 @@ explain select * from products  where product_name  ='xe máy'and product_price 
 Tiến hành sửa đổi view
 Tiến hành xoá view*/
 CREATE VIEW w_product AS
-    SELECT product_code, product_name, product_price, product_status
-    FROM products;
+    SELECT 
+        product_code, product_name, product_price, product_status
+    FROM
+        products;
 
-SELECT *
-FROM w_product;
+SELECT 
+    *
+FROM
+    w_product;
 
 insert into w_product
 values('1124','rượu nhất',50000,'ngon');
 
 UPDATE w_product 
-SET product_name = 'rượu nhì'
-WHERE product_code = '1124';
+SET 
+    product_name = 'rượu nhì'
+WHERE
+    product_code = '1124';
 
-SELECT *
-FROM products;
+SELECT 
+    *
+FROM
+    products;
     
 DELETE FROM w_product 
-WHERE product_code = '1124';
+WHERE
+    product_code = '1124';
 
 drop view w_product;
 
