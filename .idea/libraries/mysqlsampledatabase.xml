@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mysqlsampledatabase">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jame/ss05_database_trigger/mysqlsampledatabase.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
