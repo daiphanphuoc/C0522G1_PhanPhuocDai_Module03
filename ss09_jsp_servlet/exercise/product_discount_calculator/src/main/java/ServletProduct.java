@@ -19,6 +19,9 @@ public class ServletProduct extends HttpServlet {
         double amount =percent*price*0.01;
         double discountPrice=price-amount;
         RequestDispatcher requestDispatcher=request.getRequestDispatcher("result.jsp");
+        request.setAttribute("name",name);
+        request.setAttribute("price",price);
+        request.setAttribute("percent",percent);
         request.setAttribute("amount",amount);
         request.setAttribute("discount",discountPrice);
         requestDispatcher.forward(request,response);
