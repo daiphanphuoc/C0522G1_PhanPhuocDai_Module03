@@ -16,14 +16,14 @@ public class ServletProduct extends HttpServlet {
         String name = request.getParameter("product");
         double price = Double.parseDouble(request.getParameter("price"));
         double percent = Double.parseDouble(request.getParameter("percent"));
-        double amount =percent*price*0.01;
-        double discountPrice=price-amount;
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("result.jsp");
-        request.setAttribute("name",name);
-        request.setAttribute("price",price);
-        request.setAttribute("percent",percent);
-        request.setAttribute("amount",amount);
-        request.setAttribute("discount",discountPrice);
-        requestDispatcher.forward(request,response);
+        double amount = percent * price * 0.01;
+        double discountPrice = price - amount;
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("result.jsp");
+        request.setAttribute("name", name);
+        request.setAttribute("price", price);
+        request.setAttribute("percent", percent);
+        request.setAttribute("amount", amount);
+        request.setAttribute("discount", discountPrice);
+        requestDispatcher.forward(request, response);
     }
 }

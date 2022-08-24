@@ -7,15 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>$Title$</title>
-  </head>
-  <body>
-  <form action="/product" method="post">
+</head>
+<body>
+<form action="/product" method="post">
     <input name="product" type="text" placeholder="mô tả sản phẩm">
     <input name="price" type="text" placeholder="giá niêm yết">
     <input name="percent" type="text" placeholder="tỷ lệ chiết khấu %">
     <input id="sub" type="submit" value="submit">
-  </form>
-  </body>
+</form>
+</body>
 </html>
