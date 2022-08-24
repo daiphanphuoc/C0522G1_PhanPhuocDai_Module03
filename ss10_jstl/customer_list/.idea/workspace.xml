@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef8b5435-ee6a-4c0d-88fd-dbdd51fb5a88" name="Changes" comment="" />
+    <list default="true" id="1eb15c36-4e0d-4bf8-bb77-5a7b748456df" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,12 +18,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
         <option value="Jsp File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -32,7 +33,7 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectId" id="2DmWPIZ5DyauT1KCrpedSJ12yAT" />
+  <component name="ProjectId" id="2Dn96vm3CU9O5ehhVJY4WgzORDm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -43,20 +44,28 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.65" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.65" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="Gradle : org.example : dictionary-1.0-SNAPSHOT.war">
+        <artifact name="Gradle : org.example : customer_list-1.0-SNAPSHOT.war">
           <settings>
             <option name="CONTEXT_PATH" value="" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="d6c90b11-2eee-4ec4-a02f-62289aab6c71" />
+        <option name="BASE_DIRECTORY_NAME" value="25c6b217-0a4b-4b06-9da7-547b7484b3de" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -64,7 +73,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="57261" />
+        <option name="DEBUG_PORT" value="58872" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -129,7 +138,7 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="Gradle : org.example : dictionary-1.0-SNAPSHOT.war" />
+          <artifact name="Gradle : org.example : customer_list-1.0-SNAPSHOT.war" />
         </option>
       </method>
     </configuration>
@@ -137,13 +146,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ef8b5435-ee6a-4c0d-88fd-dbdd51fb5a88" name="Changes" comment="" />
-      <created>1661304715892</created>
+      <changelist id="1eb15c36-4e0d-4bf8-bb77-5a7b748456df" name="Changes" comment="" />
+      <created>1661323814219</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1661304715892</updated>
-      <workItem from="1661304717593" duration="3766000" />
-      <workItem from="1661333035722" duration="37000" />
+      <updated>1661323814219</updated>
+      <workItem from="1661323817329" duration="3924000" />
+      <workItem from="1661327840303" duration="632000" />
     </task>
     <servers />
   </component>

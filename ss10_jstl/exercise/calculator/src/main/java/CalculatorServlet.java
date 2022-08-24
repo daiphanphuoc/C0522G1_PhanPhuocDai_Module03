@@ -12,35 +12,35 @@ public class CalculatorServlet extends HttpServlet {
         double firstNumber = Double.parseDouble(request.getParameter("firstOperand"));
         double secondNumber = Double.parseDouble(request.getParameter("secondOperand"));
         String operator = request.getParameter("operator");
-        char op=' ';
+        char op = ' ';
         double result = 0;
         switch (operator) {
             case "ADDITION":
                 result = firstNumber + secondNumber;
-                op='+';
+                op = '+';
                 break;
             case "SUBTRACTION":
-                op='-';
+                op = '-';
                 result = firstNumber - secondNumber;
                 break;
             case "MULTIPLICATION":
-                op='*';
+                op = '*';
                 result = firstNumber * secondNumber;
                 break;
             case "DIVISION":
-                op='/';
+                op = '/';
                 if (secondNumber != 0) {
                     result = firstNumber / secondNumber;
-                }else{
+                } else {
                     throw new RuntimeException("Can't divide by zero");
                 }
         }
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("display.jsp");
-        request.setAttribute("result",result);
-        request.setAttribute("firstNumber",firstNumber);
-        request.setAttribute("secondNumber",secondNumber);
-        request.setAttribute("operator",op);
-        requestDispatcher.forward(request,response);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("display.jsp");
+        request.setAttribute("result", result);
+        request.setAttribute("firstNumber", firstNumber);
+        request.setAttribute("secondNumber", secondNumber);
+        request.setAttribute("operator", op);
+        requestDispatcher.forward(request, response);
 
     }
 

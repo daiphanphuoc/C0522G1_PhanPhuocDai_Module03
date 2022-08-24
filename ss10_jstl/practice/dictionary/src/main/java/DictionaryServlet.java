@@ -26,17 +26,17 @@ public class DictionaryServlet extends HttpServlet {
 
         String result = dic.get(search);
         if (result != null) {
-            RequestDispatcher requestDispatcher =request.getRequestDispatcher("result.jsp");
-            request.setAttribute("search",search);
-            request.setAttribute("result",result);
-            requestDispatcher.forward(request,response);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("result.jsp");
+            request.setAttribute("search", search);
+            request.setAttribute("result", result);
+            requestDispatcher.forward(request, response);
 
 
         } else {
-            RequestDispatcher requestDispatcher =request.getRequestDispatcher("index.jsp");
-            request.setAttribute("search",search);
-            request.setAttribute("result",result);
-            requestDispatcher.forward(request,response);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+            request.setAttribute("search", search);
+            request.setAttribute("result", result);
+            requestDispatcher.forward(request, response);
         }
     }
 }
