@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef8b5435-ee6a-4c0d-88fd-dbdd51fb5a88" name="Changes" comment="" />
+    <list default="true" id="ef8b5435-ee6a-4c0d-88fd-dbdd51fb5a88" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../ss11_mvc/practice/customer_management/src/main/java/controller/CustomerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss11_mvc/practice/customer_management/src/main/java/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss11_mvc/practice/customer_management/src/main/java/service/ICustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss11_mvc/practice/customer_management/src/main/java/service/impl/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss11_mvc/practice/customer_management/src/main/webapp/customer/create.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss11_mvc/practice/customer_management/src/main/webapp/customer/list.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,6 +151,7 @@
       <updated>1661304715892</updated>
       <workItem from="1661304717593" duration="3766000" />
       <workItem from="1661333035722" duration="37000" />
+      <workItem from="1661388800532" duration="1357000" />
     </task>
     <servers />
   </component>
