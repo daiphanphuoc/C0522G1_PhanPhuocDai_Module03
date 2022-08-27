@@ -9,7 +9,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserService implements IUserService {
-    IUserRepository repository =new UserRepository();
+    IUserRepository repository = new UserRepository();
+
     @Override
     public void insertUser(User user) throws SQLException {
         repository.insertUser(user);

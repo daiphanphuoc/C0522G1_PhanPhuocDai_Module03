@@ -40,7 +40,6 @@ public class UserRepository implements IUserRepository {
     }
 
 
-
     @Override
     public void insertUser(User user) throws SQLException {
         System.out.println(INSERT_USERS_SQL);
@@ -55,6 +54,7 @@ public class UserRepository implements IUserRepository {
             printSQLException(e);
         }
     }
+
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {
@@ -123,15 +123,16 @@ public class UserRepository implements IUserRepository {
         }
         return users;
     }
+
     @Override
     public List<User> sortByName(String sort) {
-        List<User> users=new ArrayList<>();
-        Connection connection=getConnection();
+        List<User> users = new ArrayList<>();
+        Connection connection = getConnection();
         try {
-            PreparedStatement pre =connection.prepareStatement(SELECT_USER_BY_COUNTRY_SORT+" "+ sort);
-           /* pre.setString(1,"%"+country+"%");*/
+            PreparedStatement pre = connection.prepareStatement(SELECT_USER_BY_COUNTRY_SORT + " " + sort);
+            /* pre.setString(1,"%"+country+"%");*/
 
-            ResultSet rs =pre.executeQuery();
+            ResultSet rs = pre.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
@@ -173,12 +174,12 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public List<User> searchByCountry(String country) {
-        List<User> users=new ArrayList<>();
-        Connection connection=getConnection();
+        List<User> users = new ArrayList<>();
+        Connection connection = getConnection();
         try {
-            PreparedStatement pre =connection.prepareStatement(SELECT_USER_BY_COUNTRY);
-            pre.setString(1,"%"+country+"%");
-            ResultSet rs =pre.executeQuery();
+            PreparedStatement pre = connection.prepareStatement(SELECT_USER_BY_COUNTRY);
+            pre.setString(1, "%" + country + "%");
+            ResultSet rs = pre.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");

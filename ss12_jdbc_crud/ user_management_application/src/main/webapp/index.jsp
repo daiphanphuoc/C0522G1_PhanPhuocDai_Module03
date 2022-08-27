@@ -5,17 +5,17 @@
   Time: 8:17 SA
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>$Title$</title>
-  </head>
-  <body>
+</head>
+<body>
 <%-- <c:redirect url="/users"></c:redirect>--%>
-  <%
-  RequestDispatcher requestDispatcher= request.getRequestDispatcher("/users");
-  requestDispatcher.forward(request,response);
-  %>
-  </body>
+<%
+    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/users");
+    requestDispatcher.forward(request, response);
+%>
+</body>
 </html>

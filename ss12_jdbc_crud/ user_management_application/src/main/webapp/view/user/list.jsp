@@ -31,7 +31,7 @@
         <caption><h2>List of Users</h2></caption>
         <tr>
             <th>ID</th>
-            <th>Name </th>
+            <th>Name</th>
             <th>Email</th>
             <th>Country</th>
             <th>Actions</th>
