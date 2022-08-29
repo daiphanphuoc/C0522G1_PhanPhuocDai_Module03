@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS employee (
     salary DOUBLE NOT NULL CHECK (salary >= 3000000),
     phone_number VARCHAR(12) NOT NULL,
     email VARCHAR(45),
-    address VARCHAR(50),
+    address VARCHAR(250),
     position_id INT,
     FOREIGN KEY (position_id)
         REFERENCES `position` (id),
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS customer (
     salary DOUBLE NOT NULL CHECK (salary >= 3000000),
     phone_number VARCHAR(12) NOT NULL,
     email VARCHAR(45),
-    address VARCHAR(50),
+    address VARCHAR(250),
     is_delete BIT DEFAULT 0
 );
 

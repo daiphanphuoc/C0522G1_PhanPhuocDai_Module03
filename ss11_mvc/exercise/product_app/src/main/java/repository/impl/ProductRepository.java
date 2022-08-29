@@ -39,12 +39,14 @@ public class ProductRepository implements IProductRepository<Product> {
     }
 
     public Product findId(String id) {
-        Set<String> productSet = products.keySet();
+        /*Set<String> productSet = products.keySet();
         for (String key : productSet) {
             if (products.get(key).getId().equals(id)) {
                 return products.get(key);
             }
         }
-        return null;
+        return null;*/
+
+        return products.get(id);
     }
 }
