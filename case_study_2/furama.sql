@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS facility (
     FOREIGN KEY (facility_type_id)
         REFERENCES facility_type (id),
     standard_room VARCHAR(45),
-    description_other_convenience VARCHAR(45),
+    description_other_convenience VARCHAR(255),
     pool_area DOUBLE,
     number_of_floors INT,
     facility_free TEXT,
