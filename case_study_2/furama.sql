@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS employee (
     `name` VARCHAR(50) NOT NULL,
     date_of_birth DATE NOT NULL,
     id_card VARCHAR(12) NOT NULL UNIQUE,
+    gender BIT(1) NOT NULL,
     salary DOUBLE NOT NULL CHECK (salary >= 3000000),
     phone_number VARCHAR(12) NOT NULL,
     email VARCHAR(45),
@@ -79,10 +80,9 @@ CREATE TABLE IF NOT EXISTS customer (
     FOREIGN KEY (customer_type_id)
         REFERENCES customer_type (id),
     `name` VARCHAR(50) NOT NULL,
-    gender BIT(1) NOT NULL,
+    gender BIT(1) NOT NULL ,
     date_of_birth DATE NOT NULL,
     id_card VARCHAR(12) NOT NULL UNIQUE,
-    salary DOUBLE NOT NULL CHECK (salary >= 3000000),
     phone_number VARCHAR(12) NOT NULL,
     email VARCHAR(45),
     address VARCHAR(250),
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS rent_type (
 CREATE TABLE IF NOT EXISTS facility (
     id INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(50) NOT NULL,
-    area INT CHECK (area > 30),
+    area DOUBLE CHECK (area > 30),
     cost DOUBLE CHECK (cost > 0),
     max_people INT CHECK (max_people BETWEEN 1 AND 19),
     rent_type_id INT,
@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS attach_facility (
     is_delete BIT DEFAULT 0
 );
 
-CREATE TABLE IF NOT EXISTS contrat_detail (
+CREATE TABLE IF NOT EXISTS contract_detail (
     id INT AUTO_INCREMENT PRIMARY KEY,
     contract_id INT,
     attach_facility_id INT,
