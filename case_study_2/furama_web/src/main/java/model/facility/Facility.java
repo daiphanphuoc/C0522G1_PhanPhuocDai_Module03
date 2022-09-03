@@ -7,23 +7,25 @@ public abstract class Facility {
     private double rentalCosts;
     private int maxPerson;
     private RentType rentalType;
-    private String descriptionOtherConvenience;
+    private FacilityType facilityType;
+    private String description;
 
     public Facility() {
     }
 
     public Facility(int iDFacility, String nameFacility, double leasedArea, double rentalCosts,
-                    int maxPerson, RentType rentalType, String descriptionOtherConvenience) {
+                    int maxPerson, RentType rentalType, FacilityType facilityType, String description) {
         this.iDFacility = iDFacility;
         this.nameFacility = nameFacility;
         this.leasedArea = leasedArea;
         this.rentalCosts = rentalCosts;
         this.maxPerson = maxPerson;
         this.rentalType = rentalType;
-        this.descriptionOtherConvenience = descriptionOtherConvenience;
+        this.facilityType = facilityType;
+        this.description = description;
     }
 
-
+    public abstract String getInfo();
 
     public String getNameFacility() {
         return nameFacility;
@@ -73,12 +75,21 @@ public abstract class Facility {
         this.iDFacility = iDFacility;
     }
 
-    public String getDescriptionOtherConvenience() {
-        return descriptionOtherConvenience;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptionOtherConvenience(String descriptionOtherConvenience) {
-        this.descriptionOtherConvenience = descriptionOtherConvenience;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+    public FacilityType getFacilityType() {
+        return facilityType;
+    }
+
+    public void setFacilityType(FacilityType facilityType) {
+        this.facilityType = facilityType;
     }
 
     @Override

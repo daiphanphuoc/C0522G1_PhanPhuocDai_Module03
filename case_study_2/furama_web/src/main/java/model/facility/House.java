@@ -9,11 +9,19 @@ public class House extends Facility {
     public House() {
     }
 
+    @Override
+    public String getInfo() {
+        return String.format("%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s",
+                getFacilityType().getName(),getIDFacility(),getNameFacility(),getLeasedArea(),
+                getRentalCosts(),getMaxPerson(),getRentalType().getName(),
+                getDescription(),getRoom(),getFloor(),"null","null");
+    }
+
     public House(int iDFacility, String nameFacility, double leasedArea, double rentalCosts,
-                 int maxPerson, int rentalType, String descriptionOtherConvenience,
+                 int maxPerson, RentType rentalType,FacilityType facilityType, String description,
                  String room, int floor) {
         super(iDFacility, nameFacility, leasedArea, rentalCosts, maxPerson,
-                rentalType, descriptionOtherConvenience);
+                rentalType,facilityType, description);
         this.room = room;
         this.floor = floor;
     }

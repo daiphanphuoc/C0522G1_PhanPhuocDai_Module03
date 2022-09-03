@@ -11,11 +11,18 @@ public class Villa extends Facility {
     public Villa() {
     }
 
+    @Override
+    public String getInfo() {
+        return String.format("%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s",getFacilityType().getName(),getIDFacility(),getNameFacility(),getLeasedArea(),
+                getRentalCosts(),getMaxPerson(),getRentalType().getName(),
+                getDescription(),getRoom(),getFloor(),getAreaPool(),"null");
+    }
+
     public Villa(int iDFacility, String nameFacility, double leasedArea, double rentalCosts,
-                 int maxPerson, int rentalType, String descriptionOtherConvenience,
+                 int maxPerson, RentType rentalType, FacilityType facilityType, String description,
                  String room, int floor, double areaPool) {
-        super(iDFacility, nameFacility, leasedArea, rentalCosts, maxPerson, rentalType,
-                descriptionOtherConvenience);
+        super(iDFacility, nameFacility, leasedArea, rentalCosts, maxPerson, rentalType,facilityType,
+                description);
         this.room = room;
         this.floor = floor;
         this.areaPool = areaPool;
@@ -60,4 +67,6 @@ public class Villa extends Facility {
     public int hashCode() {
         return Objects.hash(getIDFacility());
     }
+
+
 }

@@ -24,6 +24,8 @@ public abstract class Person {
         this.address = address;
     }
 
+    public abstract String getInfo();
+
     public String getAddress() {
         return address;
     }
