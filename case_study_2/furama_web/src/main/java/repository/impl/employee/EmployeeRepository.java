@@ -15,38 +15,43 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EmployeeRepository implements IEmployeeRepository<T> {
-    private static final String INSERT = "insert into employee(employee_name, employee_birthday, " +
-            "employee_id_card, employee_salary, employee_phone, employee_email, employee_address, " +
+public class EmployeeRepository implements IEmployeeRepository<Employee> {
+    private static final String DELETE = "update employee set is_delete = 1 where is_delete = 0 and id = ?;";
+    private static final String SELECT_BY_ID = "select employee.*, position.name as position_name," +
+            " division.name as division_name, education_degree.name as education_degree_name " +
+            "from employee " +
+            "join position on position_id=position.id " +
+            "join division on division_id=division.id " +
+            "join education_degree on education_degree_id=education_degree.id " +
+            "where employee.is_delete = 0 and employee.id = ? ;";
+    private static final String SELECT = "select employee.*, position.name as position_name, " +
+            "division.name as division_name, education_degree.name as education_degree_name " +
+            "from employee " +
+            "join position on position_id=position.id " +
+            "join division on division_id=division.id " +
+            "join education_degree on education_degree_id=education_degree.id " +
+            "where employee.is_delete = 0 ;";
+    private static final String SELECT_SEARCH = "select employee.*, position.name as position_name, " +
+            "division.name as division_name, education_degree.name as education_degree_name " +
+            "from employee " +
+            "join position on position_id=position.id " +
+            "join division on division_id=division.id " +
+            "join education_degree on education_degree_id=education_degree.id " +
+            "where employee.is_delete = 0 and employee.name like ? and phone_number like ? and address like ? ;";
+    private static final String INSERT = "insert into employee(name, date_of_birth, " +
+            "id_card, salary, phone_number, email, address, " +
             "position_id, education_degree_id,division_id,gender)" +
             "values(?,?,?,?,?,?,?,?,?,?,?);";
-    private static final String DELETE = "update employee set is_delete = 1 where is_delete = 0 and id = ?;";
-    private static final String SELECT_BY_ID = "select employee.*, position.name as position_name, division.name as division_name, education_degree.name as education_degree_name " +
-            "from employee " +
-            "join position on position_id=position.id " +
-            "join division on division_id=division.id " +
-            "join education_degree on education_degree_id=education_degree.id " +
-            "where employee.is_delete = 0 and employee.id = ?";
-    private static final String SELECT = "select employee.*, position.name as position_name, division.name as division_name, education_degree.name as education_degree_name " +
-            "from employee " +
-            "join position on position_id=position.id " +
-            "join division on division_id=division.id " +
-            "join education_degree on education_degree_id=education_degree.id " +
-            "where employee.is_delete = 0 ";
-    private static final String SELECT_SEARCH = "select employee.*, position.name as position_name, division.name as division_name, education_degree.name as education_degree_name " +
-            "from employee " +
-            "join position on position_id=position.id " +
-            "join division on division_id=division.id " +
-            "join education_degree on education_degree_id=education_degree.id " +
-            "where employee.is_delete = 0 and employee.name like ? and phone like ? address like ?";
-    private static final String UPDATE = "update  employee set employee_name =?, employee_birthday = ?,  employee_id_card = ?, employee_salary =?, employee_phone =? , employee_email = ?, employee_address =?, position_id = ?, education_degree_id = ?, division_id = ?, gender = ? where id = ?;";
+    private static final String UPDATE = "update  employee set name =?, date_of_birth = ?, " +
+            " id_card = ?, salary =?, phone_number =? , email = ?, address =?, position_id = ?, " +
+            "education_degree_id = ?, division_id = ?, gender = ? where id = ? and is_delete = 0;";
 
-    private static IEmployeeRepository<T> repository;
+    private static IEmployeeRepository<Employee> repository;
 
     public EmployeeRepository() {
     }
 
-    public synchronized static IEmployeeRepository<T> getInstance() {
+    public synchronized static IEmployeeRepository<Employee> getInstance() {
         if (repository == null) {
             repository = new EmployeeRepository();
 
@@ -55,9 +60,9 @@ public class EmployeeRepository implements IEmployeeRepository<T> {
     }
 
     @Override
-    public Map<Integer, T> findAll(String sortByName) {
-        Map<Integer, T> employeeMap = new HashMap<>();
-        T employee;
+    public Map<Integer, Employee> findAll(String sortByName) {
+        Map<Integer, Employee> employeeMap = new HashMap<>();
+        Employee employee;
         try {
             Connection con = ConnectionDataBase.getConnection();
             PreparedStatement pre = con.prepareStatement(SELECT);
@@ -89,7 +94,7 @@ public class EmployeeRepository implements IEmployeeRepository<T> {
                 double salary = rs.getDouble("salary");
                 String user = rs.getNString("user_name");
 
-                employee = new T(name, idCard, birthday, gender, phone, email, address, id, degree, position, division, salary, user);
+                employee = new Employee(name, idCard, birthday, gender, phone, email, address, id, degree, position, division, salary, user);
                 employeeMap.put(id, employee);
             }
         } catch (SQLException e) {
@@ -99,9 +104,9 @@ public class EmployeeRepository implements IEmployeeRepository<T> {
     }
 
     @Override
-    public Map<Integer, T> find(String name, String phone, String address, String sortByName) {
-        Map<Integer, T> employeeMap = new HashMap<>();
-        T employee;
+    public Map<Integer, Employee> find(String name, String phone, String address, String sortByName) {
+        Map<Integer, Employee> employeeMap = new HashMap<>();
+        Employee employee;
         try {
             Connection con = ConnectionDataBase.getConnection();
             PreparedStatement pre = con.prepareStatement(SELECT_SEARCH);
@@ -113,13 +118,15 @@ public class EmployeeRepository implements IEmployeeRepository<T> {
             Position position;
             EducationDegree degree;
             Division division;
-            if (rs.next()) {
+            while (rs.next()) {
                 int idP = rs.getInt("position_id");
                 String nameP = rs.getString("position_name");
                 position = new Position(idP, nameP);
+
                 int idDegree = rs.getInt("education_degree_id");
                 String nameDegree = rs.getString("education_degree_name");
                 degree = new EducationDegree(idDegree, nameDegree);
+
                 int idDivision = rs.getInt("division_id");
                 String nameDivision = rs.getString("division_name");
                 division = new Division(idDivision, nameDivision);
@@ -134,7 +141,7 @@ public class EmployeeRepository implements IEmployeeRepository<T> {
                 double salary = rs.getDouble("salary");
                 String user = rs.getNString("user_name");
                 int id = rs.getInt("id");
-                employee = new T(nameEmployee, idCard, birthday, gender, phoneEmployee, email, addressEmployee, id, degree, position, division, salary, user);
+                employee = new Employee(nameEmployee, idCard, birthday, gender, phoneEmployee, email, addressEmployee, id, degree, position, division, salary, user);
                 employeeMap.put(id, employee);
             }
         } catch (SQLException e) {
@@ -144,8 +151,8 @@ public class EmployeeRepository implements IEmployeeRepository<T> {
     }
 
     @Override
-    public T findByID(int id) {
-        T employee;
+    public Employee findByID(int id) {
+        Employee employee;
         try {
             Connection con = ConnectionDataBase.getConnection();
             PreparedStatement pre = con.prepareStatement(SELECT_BY_ID);
@@ -176,7 +183,7 @@ public class EmployeeRepository implements IEmployeeRepository<T> {
                 double salary = rs.getDouble("salary");
                 String user = rs.getNString("user_name");
 
-                employee = new T(name, idCard, birthday, gender, phone, email, address, id, degree, position, division, salary, user);
+                employee = new Employee(name, idCard, birthday, gender, phone, email, address, id, degree, position, division, salary, user);
                 return employee;
             }
         } catch (SQLException e) {
@@ -200,7 +207,7 @@ public class EmployeeRepository implements IEmployeeRepository<T> {
     }
 
     @Override
-    public boolean update(@NotNull T employee) {
+    public boolean update(@NotNull Employee employee) {
         Connection connection = ConnectionDataBase.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE);
@@ -228,7 +235,7 @@ public class EmployeeRepository implements IEmployeeRepository<T> {
     }
 
     @Override
-    public boolean insert(@NotNull T employee) {
+    public boolean insert(@NotNull Employee employee) {
         Connection connection = ConnectionDataBase.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT);

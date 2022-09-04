@@ -16,7 +16,7 @@ public class RentTypeService implements IRentTypeService<RentType> {
     IRepository<RentType> repository = RentTypeRepository.getInstance();
     private static IRentTypeService<RentType> service;
 
-    public RentTypeService() {
+    private RentTypeService() {
     }
 
     public static IRentTypeService<RentType> getInstance() {

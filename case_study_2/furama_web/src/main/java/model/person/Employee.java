@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class T extends Person {
+public class Employee extends Person {
     private int iDEmployee;
     private EducationDegree degree;
     private Position position;
@@ -13,7 +13,15 @@ public class T extends Person {
     private double salary;
     private String userName;
 
-    public T() {
+    public Employee() {
+    }
+
+    public int getiDEmployee() {
+        return iDEmployee;
+    }
+
+    public void setiDEmployee(int iDEmployee) {
+        this.iDEmployee = iDEmployee;
     }
 
     @Override
@@ -26,10 +34,10 @@ public class T extends Person {
                 position.getName(),division.getName(), salary, userName);
     }
 
-    public T(String name, String iDCitizen, Date birthday, boolean sex,
-             String phone, String email, String address, int iDEmployee,
-             EducationDegree degree, Position position, Division division,
-             double salary, String userName) {
+    public Employee(String name, String iDCitizen, Date birthday, boolean sex,
+                    String phone, String email, String address, int iDEmployee,
+                    EducationDegree degree, Position position, Division division,
+                    double salary, String userName) {
         super(name, iDCitizen, birthday, sex, phone, email, address);
         this.iDEmployee = iDEmployee;
         this.degree = degree;
@@ -39,6 +47,14 @@ public class T extends Person {
         this.userName = userName;
     }
 
+    public Employee(String name, String iDCitizen, Date birthday, boolean sex, String phone, String email, String address, EducationDegree degree, Position position, Division division, double salary, String userName) {
+        super(name, iDCitizen, birthday, sex, phone, email, address);
+        this.degree = degree;
+        this.position = position;
+        this.division = division;
+        this.salary = salary;
+        this.userName = userName;
+    }
 
     public EducationDegree getDegree() {
         return degree;

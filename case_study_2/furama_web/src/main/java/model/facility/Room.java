@@ -8,6 +8,11 @@ public class Room extends Facility{
     public Room() {
     }
 
+    public Room(String nameFacility, double leasedArea, double rentalCosts, int maxPerson, RentType rentalType, FacilityType facilityType, String description, String free) {
+        super(nameFacility, leasedArea, rentalCosts, maxPerson, rentalType, facilityType, description);
+        this.free = free;
+    }
+
     @Override
     public String getInfo() {
         return String.format("%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s",getFacilityType().getName(),getIDFacility(),getNameFacility(),getLeasedArea(),

@@ -12,6 +12,7 @@
 <head>
 
     <title>Furama</title>
+    <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap4.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -69,7 +70,8 @@
             <div>
 
 
-                <table class="table table-striped table-bordered border border-3 border-secondary">
+                <table class="table table-striped table-bordered border border-3 border-secondary" id="customerTable">
+                    <thead>
                     <tr class="text-center bg-info">
                         <th>STT</th>
                         <th>Họ và Tên</th>
@@ -79,8 +81,10 @@
                         <th>Cập nhật</th>
                         <th>Xóa</th>
                     </tr>
+                    </thead>
                     <%--String name, String iDCitizen, Date birthday, boolean sex, String phone,
                                         String email, int iDCustomer, CustomerType customerType, String address--%>
+                    <tbody>
                     <c:forEach varStatus="status" var="customer" items="${customers}">
                         <tr>
                             <td class="text-center">${status.count}</td>
@@ -115,6 +119,7 @@
                             </td>
                         </tr>
                     </c:forEach>
+                    </tbody>
                 </table>
 
 
@@ -265,5 +270,18 @@
         document.getElementById("addressCustomer").innerHTML = info[6];
     }
 </script>
+<script src="/jquery/jquery-3.5.1.min.js"></script>
+<script src="/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script>
 
+
+    $(document).ready(function () {
+        $('#customerTable').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5
+        });
+    });
+</script>
 </html>

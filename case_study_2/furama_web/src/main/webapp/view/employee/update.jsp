@@ -30,7 +30,7 @@
 
 
 <div class="container-fluid">
-    <div  class="row">
+    <div class="row">
         <jsp:include page="/view/header.jsp"/>
     </div>
 
@@ -44,45 +44,86 @@
         <div class="col-sm-9">
 
             <div class="row">
-                <h3 class="text-center">Cập nhập khách hàng</h3>
-                <form  method="post">
+                <h3 class="text-center">Cập nhập nhân viên</h3>
+                <form method="post">
                     <fieldset>
-                        <legend style="color: crimson">Thông tin khách hàng</legend>
+                        <legend style="color: crimson">Thông tin nhân viên</legend>
                         <table>
                             <tr>
-                                <td>Tên khách hàng:</td>
+                                <td>Tên nhân viên:</td>
                                 <td>
-                                    <input name="name" value="${customer.getName()}">
-                                    <input  name="id" value="${customer.getIDCustomer()}">
+                                    <input name="name" value="${employee.getName()}">
+                                    <input hidden name="id" value="${employee.getIDEmployee()}">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Giới tính:</td>
-                                <td><input name="gender" value="${customer.isSex()}"></td>
+                                <td>
+                                    <label class="d-block me-4">
+                                        <input type="radio" value="true" name="gender" checked> Male
+                                        <i class="fa-solid fa-mars"></i>
+                                    </label>
+                                    <label class="d-block">
+                                        <input type="radio" value="false" name="gender" > Female
+                                        <i class="fa-solid fa-venus"></i>
+                                    </label>
+                                    <%--<input name="gender" value="${employee.isSex()}"></td>--%>
                             </tr>
                             <tr>
                                 <td>Ngày sinh:</td>
-                                <td><input type="date" name="dateOfBirth" value="${customer.getBirthday()}"></td>
+                                <td><input type="date" name="dateOfBirth" value="${employee.getBirthday()}"></td>
                             </tr>
                             <tr>
                                 <td>Số CMND:</td>
-                                <td><input name="idCard" value="${customer.getIDCitizen()}"></td>
+                                <td><input name="idCard" value="${employee.getIDCitizen()}"></td>
                             </tr>
                             <tr>
                                 <td>Số điện thoại:</td>
-                                <td><input name="phoneNumber" value="${customer.getPhone()}"></td>
+                                <td><input name="phoneNumber" value="${employee.getPhone()}"></td>
                             </tr>
                             <tr>
                                 <td>Email:</td>
-                                <td><input name="email" value="${customer.getEmail()}"></td>
+                                <td><input name="email" value="${employee.getEmail()}"></td>
                             </tr>
                             <tr>
                                 <td>Địa chỉ:</td>
-                                <td><input name="address" value="${customer.getAddress()}"></td>
+                                <td><input name="address" value="${employee.getAddress()}"></td>
                             </tr>
                             <tr>
-                                <td>Mã loại khách hàng:</td>
-                                <td><input type="number" name="customerTypeId" value="${customer.getCustomerType().getId()}"></td>
+                                <td><label for="degree">Trình độ:</label></td>
+                                <td><select id="degree" name="degree">
+                                    <option value="${employee.getDegree().getId()}">${employee.getDegree().getName()}</option>
+                                    <c:forEach var="educationDegree" items="${degreeList}">
+                                        <option value="${educationDegree.getId()}">${educationDegree.getName()}</option>
+                                    </c:forEach>
+                                </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="position">Chức vụ/ vị trí:</label></td>
+                                <td>
+                                    <select id="position" name="position">
+                                        <option value="${employee.getPosition().getId()}">${employee.getPosition().getName()}</option>
+                                        <c:forEach var="position" items="${positionList}">
+                                            <option value="${position.getId()}">${position.getName()}</option>
+                                        </c:forEach>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="division">Bộ phận:</label></td>
+                                <td>
+                                    <select id="division" name="division">
+                                        <option value="${employee.getDivision().getId()}">${employee.getDivision().getName()}</option>
+                                        <c:forEach var="division" items="${divisionList}">
+                                            <option value="${division.getId()}">${division.getName()}</option>
+                                        </c:forEach>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Lương:</td>
+                                <td><input type="number" name="salary" value="${employee.getSalary()}"></td>
                             </tr>
                             <tr>
                                 <td></td>

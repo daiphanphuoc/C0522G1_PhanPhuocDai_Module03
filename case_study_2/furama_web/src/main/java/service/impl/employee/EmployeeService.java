@@ -1,6 +1,6 @@
 package service.impl.employee;
 
-import model.person.T;
+import model.person.Employee;
 import repository.employee.IEmployeeRepository;
 import repository.impl.employee.EmployeeRepository;
 import service.i_employee.IEmployeeService;
@@ -8,7 +8,7 @@ import service.i_employee.IEmployeeService;
 import java.util.Map;
 
 public class EmployeeService implements IEmployeeService {
-    IEmployeeRepository<T> repository = EmployeeRepository.getInstance();
+    IEmployeeRepository<Employee> repository = EmployeeRepository.getInstance();
     private static IEmployeeService service;
 
     public EmployeeService() {
@@ -22,17 +22,17 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public T findByID(int id) {
+    public Employee findByID(int id) {
         return repository.findByID(id);
     }
 
     @Override
-    public Map<Integer, T> findAll(String sortByName) {
+    public Map<Integer, Employee> findAll(String sortByName) {
         return repository.findAll(sortByName);
     }
 
     @Override
-    public Map<Integer, T> find(String name, String phone, String address, String sortByName) {
+    public Map<Integer, Employee> find(String name, String phone, String address, String sortByName) {
         return repository.find(name,phone,address,sortByName);
     }
 
@@ -42,12 +42,12 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public boolean update(T employee) {
+    public boolean update(Employee employee) {
         return repository.update(employee);
     }
 
     @Override
-    public boolean insert(T employee) {
+    public boolean insert(Employee employee) {
         return repository.insert(employee);
     }
 }

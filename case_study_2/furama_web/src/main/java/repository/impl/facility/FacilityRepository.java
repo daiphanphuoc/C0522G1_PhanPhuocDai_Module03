@@ -27,7 +27,7 @@ public class FacilityRepository implements IFacilityRepository<Facility> {
             "from facility " +
             "inner join facility_type on facility_type_id=facility_type.id " +
             "inner join rent_type on rent_type_id=rent_type.id " +
-            "where facility.is_delete = 0 and facility.name like ? and facility_type.name=? and rent_type.name =?;";
+            "where facility.is_delete = 0 and facility.name like ? and facility_type.name like ? and rent_type.name like ?;";
     
     private static final String INSERT = "insert into facility(`name`, area, cost, max_people, " +
             "standard_room, description_other_convenience, pool_area, number_of_floors, " +

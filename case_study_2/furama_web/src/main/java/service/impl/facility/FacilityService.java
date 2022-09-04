@@ -11,7 +11,7 @@ public class FacilityService implements IFacilityService<Facility> {
     IFacilityRepository<Facility> repository = FacilityRepository.getInstance();
     private static IFacilityService<Facility> service;
 
-    public FacilityService() {
+    private FacilityService() {
     }
 
     public static IFacilityService<Facility> getInstance() {

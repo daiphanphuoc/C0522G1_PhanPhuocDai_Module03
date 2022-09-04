@@ -13,7 +13,8 @@ public class Villa extends Facility {
 
     @Override
     public String getInfo() {
-        return String.format("%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s",getFacilityType().getName(),getIDFacility(),getNameFacility(),getLeasedArea(),
+        return String.format("%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s@@%s",
+                getFacilityType().getName(),getIDFacility(),getNameFacility(),getLeasedArea(),
                 getRentalCosts(),getMaxPerson(),getRentalType().getName(),
                 getDescription(),getRoom(),getFloor(),getAreaPool(),"null");
     }
@@ -28,7 +29,12 @@ public class Villa extends Facility {
         this.areaPool = areaPool;
     }
 
-
+    public Villa(String nameFacility, double leasedArea, double rentalCosts, int maxPerson, RentType rentalType, FacilityType facilityType, String description, String room, int floor, double areaPool) {
+        super(nameFacility, leasedArea, rentalCosts, maxPerson, rentalType, facilityType, description);
+        this.room = room;
+        this.floor = floor;
+        this.areaPool = areaPool;
+    }
 
     public double getAreaPool() {
         return areaPool;

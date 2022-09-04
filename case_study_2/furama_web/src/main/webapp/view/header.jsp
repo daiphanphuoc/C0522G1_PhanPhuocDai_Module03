@@ -47,8 +47,8 @@
                             Employee
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">List of Employee</a></li>
-                            <li><a class="dropdown-item" href="/customer?action=create">Add new Employee</a></li>
+                            <li><a class="dropdown-item" href="/employee">List of Employee</a></li>
+                            <li><a class="dropdown-item" href="/employee?action=create">Add new Employee</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown m-1 ">
@@ -69,8 +69,8 @@
                             Service
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">List of Service</a></li>
-                            <li><a class="dropdown-item" href="#">Add new Service</a></li>
+                            <li><a class="dropdown-item" href="/facility">List of Service</a></li>
+                            <li><a class="dropdown-item" href="/facility?action=create">Add new Service</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown m-1 ">
@@ -80,8 +80,8 @@
                             Contract
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">List of Contract</a></li>
-                            <li><a class="dropdown-item" href="#">Add new Contract</a></li>
+                            <li><a class="dropdown-item" href="/contract">List of Contract</a></li>
+                            <li><a class="dropdown-item" href="/contract?action=create">Add new Contract</a></li>
                         </ul>
                     </li>
                 </ul>

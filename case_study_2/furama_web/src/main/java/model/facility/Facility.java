@@ -25,6 +25,16 @@ public abstract class Facility {
         this.description = description;
     }
 
+    public Facility(String nameFacility, double leasedArea, double rentalCosts, int maxPerson, RentType rentalType, FacilityType facilityType, String description) {
+        this.nameFacility = nameFacility;
+        this.leasedArea = leasedArea;
+        this.rentalCosts = rentalCosts;
+        this.maxPerson = maxPerson;
+        this.rentalType = rentalType;
+        this.facilityType = facilityType;
+        this.description = description;
+    }
+
     public abstract String getInfo();
 
     public String getNameFacility() {

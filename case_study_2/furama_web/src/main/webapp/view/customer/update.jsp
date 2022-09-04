@@ -53,7 +53,7 @@
                                 <td>Tên khách hàng:</td>
                                 <td>
                                     <input name="name" value="${customer.getName()}">
-                                    <input  name="id" value="${customer.getIDCustomer()}">
+                                    <input hidden name="id" value="${customer.getIDCustomer()}">
                                 </td>
                             </tr>
                             <tr>

@@ -26,6 +26,11 @@ public class House extends Facility {
         this.floor = floor;
     }
 
+    public House(String nameFacility, double leasedArea, double rentalCosts, int maxPerson, RentType rentalType, FacilityType facilityType, String description, String room, int floor) {
+        super(nameFacility, leasedArea, rentalCosts, maxPerson, rentalType, facilityType, description);
+        this.room = room;
+        this.floor = floor;
+    }
 
     public String getRoom() {
         return room;

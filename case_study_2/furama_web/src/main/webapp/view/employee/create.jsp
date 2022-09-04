@@ -44,12 +44,12 @@
 
         <div class="col-sm-9">
 
-            <h3>Thêm mới khách hàng</h3>
+            <h3>Thêm mới nhân viên</h3>
 
 
-            <form action="/customer?action=create" method="post">
+            <form class="w-50 border border-2 border-success p-3 bg-warning rounded" action="/employee?action=create" method="post">
                 <fieldset>
-                    <legend style="color: crimson">Thông tin khách hàng</legend>
+                    <legend style="color: crimson">Thông tin nhân viên</legend>
                     <table>
                         <tr>
                             <td>Tên khách hàng:</td>
@@ -80,8 +80,44 @@
                             <td><input name="address" ></td>
                         </tr>
                         <tr>
-                            <td>Mã loại khách hàng:</td>
-                            <td><input name="customerTypeId" ></td>
+                            <td><label for="degree">Trình độ:</label></td>
+                            <td><select id="degree" name="degree">
+                                <option value="${employee.getDegree().getId()}">${employee.getDegree().getName()}</option>
+                                <c:forEach var="educationDegree" items="${degreeList}">
+                                    <option value="${educationDegree.getId()}">${educationDegree.getName()}</option>
+                                </c:forEach>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="position">Chức vụ/ vị trí:</label></td>
+                            <td>
+                                <select id="position" name="position">
+                                    <option value="${employee.getPosition().getId()}">${employee.getPosition().getName()}</option>
+                                    <c:forEach var="position" items="${positionList}">
+                                        <option value="${position.getId()}">${position.getName()}</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="division">Bộ phận:</label></td>
+                            <td>
+                                <select id="division" name="division">
+                                    <option value="${employee.getDivision().getId()}">${employee.getDivision().getName()}</option>
+                                    <c:forEach var="division" items="${divisionList}">
+                                        <option value="${division.getId()}">${division.getName()}</option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lương:</td>
+                            <td><input name="salary" type="number"></td>
+                        </tr>
+                        <tr>
+                            <td>Tài khoản:</td>
+                            <td><input name="userName" ></td>
                         </tr>
                         <tr>
                             <td></td>
