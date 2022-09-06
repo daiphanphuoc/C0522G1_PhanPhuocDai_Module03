@@ -22,6 +22,18 @@ public class ContractDetailRepository implements IContractDetailRepository<Contr
     private static final String INSERT = "insert into contract_detail(contract_id,attach_facility_id,quantity) " +
             "values (?,?,?);";
 
+    private static IContractDetailRepository<ContractDetail> repository;
+
+    private ContractDetailRepository() {
+    }
+
+    public synchronized static IContractDetailRepository<ContractDetail> getInstance() {
+        if (repository == null) {
+            repository = new ContractDetailRepository();
+        }
+        return repository;
+    }
+
     @Override
     public Map<Integer, ContractDetail> findAll() {
         Map<Integer, ContractDetail> contractMap = new HashMap<>();
@@ -40,6 +52,12 @@ public class ContractDetailRepository implements IContractDetailRepository<Contr
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return contractMap;
     }
@@ -59,6 +77,12 @@ public class ContractDetailRepository implements IContractDetailRepository<Contr
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return contract;
     }
@@ -72,6 +96,12 @@ public class ContractDetailRepository implements IContractDetailRepository<Contr
             return pre.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -88,6 +118,12 @@ public class ContractDetailRepository implements IContractDetailRepository<Contr
             return pre.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -103,6 +139,12 @@ public class ContractDetailRepository implements IContractDetailRepository<Contr
             return pre.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

@@ -46,6 +46,12 @@ public class EducationDegreeRepository implements IEducationDegreeRepository<Edu
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return degreeMap;
     }
@@ -64,6 +70,12 @@ public class EducationDegreeRepository implements IEducationDegreeRepository<Edu
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }

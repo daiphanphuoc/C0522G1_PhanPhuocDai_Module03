@@ -45,6 +45,12 @@ public class DivisionRepository implements IDivisionRepository<Division> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return divisionMap;
     }
@@ -63,6 +69,12 @@ public class DivisionRepository implements IDivisionRepository<Division> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }

@@ -14,6 +14,7 @@ public class ConnectionDataBase {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(JDBCURL, JDBCUSERNAME, JDBCPASSWORD);
+
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

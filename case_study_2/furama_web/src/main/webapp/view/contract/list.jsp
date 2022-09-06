@@ -105,11 +105,16 @@
                                 </a>
                             </td>
                             <td>
-                                <button type="button"
-                                        class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    Danh sách các dịch vụ đi kèm
-                                </button>
+                                <a href="/contract?action=modal&id=${contract.getContractID()}&modal=showAttachFacility"
+                                >
+                                    <button type="button"
+                                            class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showAttachFacility">
+                                        Danh sách các dịch vụ đi kèm
+                                    </button>
 
+                                </a>
+                                <button hidden data-bs-toggle="modal" data-bs-target="#showAttachFacility"
+                                        id="clickModal"></button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -193,7 +198,7 @@
     </div>
 </div>
 
-<div class="modal" style="margin-top: 10%" id="infoCustomer" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal" style="margin-top: 10%" id="infoCustomer" tabindex="-1" aria-labelledby="infoCustomerLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -306,8 +311,75 @@
 
     </div>
 </div>
+
+<div class="modal" style="margin-top: 1%" id="createContractDetail" tabindex="-1"
+     aria-labelledby="createContractDetailLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createContractDetailLabel" style="color: #4267b2">Thêm mới hợp đồng chi tiết
+                    <span
+                            style="color: rebeccapurple" id="n"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table border="1" class="table table-striped">
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="showAttachFacility" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLabel">Attach facility list</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input hidden id="idContract" name="idContract"/>
+                <table class="table table-light table-striped table-bordered">
+                    <tr class="table-dark text-light">
+                        <th class="text-center">Attach facility</th>
+                        <th class="text-center">Cost</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-center">Unit</th>
+                        <th class="text-center">Status</th>
+                    </tr>
+                    <c:forEach var="contractDetail" items="${contractDetailDTOS}">
+                        <tr>
+                            <td>${contractDetail.name}</td>
+                            <td>${contractDetail.cost}</td>
+                            <td>${contractDetail.quantity}</td>
+                            <td>${contractDetail.unit}</td>
+                            <td>${contractDetail.status}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<input hidden id = "modal" value="${modal}">
 </body>
 <script>
+    function init(){
+        if(document.getElementById("modal").value==="showAttachFacility"){
+            document.getElementById("clickModal").click();
+        }
+    }
+    init();
+
     function infoFacility(facility) {
 
         let info = facility.split("@@");

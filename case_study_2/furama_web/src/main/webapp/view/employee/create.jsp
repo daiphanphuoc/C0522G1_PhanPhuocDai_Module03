@@ -44,10 +44,10 @@
 
         <div class="col-sm-9">
 
-            <h3>Thêm mới nhân viên</h3>
+            <h3 class="text-center">Thêm mới nhân viên</h3>
 
 
-            <form class="w-50 border border-2 border-success p-3 bg-warning rounded" action="/employee?action=create" method="post">
+            <form class="w-50 border border-2 border-success p-3  rounded " action="/employee?action=create" method="post">
                 <fieldset>
                     <legend style="color: crimson">Thông tin nhân viên</legend>
                     <table>

@@ -54,11 +54,18 @@ public class ContractRepository implements IContractRepository<Contract> {
                 int employee = rs.getInt("employee_id");
                 int customer = rs.getInt("customer_id");
                 int facility = rs.getInt("facility_id");
-                contract = new Contract(id, start, end, deposit, employee, customer, facility);
+                contract = new Contract(id, start, end, deposit, customer, employee, facility);
                 contractMap.put(id, contract);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return contractMap;
     }
@@ -80,11 +87,17 @@ public class ContractRepository implements IContractRepository<Contract> {
                 int employee = rs.getInt("employee_id");
                 int customer = rs.getInt("customer_id");
                 int facility = rs.getInt("facility_id");
-                contract = new Contract(id, start, end, deposit, employee, customer, facility);
+                contract = new Contract(id, start, end, deposit,customer, employee,  facility);
 
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return contract;
     }
@@ -98,6 +111,12 @@ public class ContractRepository implements IContractRepository<Contract> {
             return pre.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -120,6 +139,12 @@ public class ContractRepository implements IContractRepository<Contract> {
             return pre.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -141,6 +166,12 @@ public class ContractRepository implements IContractRepository<Contract> {
             return pre.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

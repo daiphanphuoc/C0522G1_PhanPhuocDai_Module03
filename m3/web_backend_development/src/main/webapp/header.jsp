@@ -1,0 +1,98 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: DELL5577
+  Date: 06/09/2022
+  Time: 1:44 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page language="java" pageEncoding="UTF-8" %>
+<div class="container-fluid">
+    <div class="row p-4 bg-primary text-white text-center">
+        <div class="col-sm-2">
+            <a class="navbar-brand " href="index.jsp">
+                <img src="https://beedesign.com.vn/wp-content/uploads/2020/08/thiet-ke-logo-chu-b-brew.png"
+                     width="128px"
+                     height="128px">
+            </a>
+        </div>
+        <div class="col-sm-8">
+            <h3 class="card-text">"Đuổi theo đam mê, thành công sẽ đuổi theo bạn"</h3>
+        </div>
+        <div class="col-sm-2">
+            <div class="card text-success bg-primary border border-danger">
+                <div class="card-body text-white">
+                    <h4 class="card-text">C0522G1</h4>
+                    <h5 class="card-text">Phan Phước Đại</h5>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row  p-0 text-white text-center">
+        <nav class="navbar navbar-expand-lg bg-info text-bg-dark">
+            <div class="col-sm-2 ">
+                <a class="navbar-brand m-1" href="index.jsp">
+                    Home
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="col-sm-7 collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto ms-5 mb-lg-0">
+                    <li class="nav-item dropdown m-1 ">
+                        <a class="nav-link dropdown-toggle navbar-brand" href="#" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Thi
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/servlet">List </a></li>
+                            <li><a class="dropdown-item" href="/servlet?action=create">Add </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown m-1 ">
+                        <a class="nav-link dropdown-toggle navbar-brand" href="#" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Customer
+                        </a>
+                        <ul class="dropdown-menu ">
+                            <li><a class="dropdown-item" href="/#">List of Customers</a></li>
+                            <li><a class="dropdown-item" href="/#?action=create">Add new Customer</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown m-1 ">
+                        <a class="nav-link dropdown-toggle navbar-brand" href="#" role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Service
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/#">List of Service</a></li>
+                            <li><a class="dropdown-item" href="/#?action=create">Add new Service</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-sm-3 navbar-nav me-auto ms-5 mb-lg-0">
+
+                <form>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <input class="form-control " type="text" name="countrySearch" placeholder="Search"
+                                   aria-label="Search">
+                        </div>
+                        <div class="col-sm-3">
+                            <input class="btn btn-success" type="submit" name="action" value="search">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </nav>
+    </div>
+</div>

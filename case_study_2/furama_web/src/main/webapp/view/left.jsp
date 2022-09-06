@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" %>
-<div>
+<div class="container-fluid">
     <div class="row">
         <div class="card shadow" style="width: 100%; margin-top: 35px">
             <img style="height: 180px"

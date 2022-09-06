@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" %>
-<div>
-    <div class="row p-4 bg-primary text-white text-center">
+<div class="container-fluid">
+    <div class="row p-4 bg-primary text-white text-center ">
         <div class="col-sm-2">
             <a class="navbar-brand " href="index.jsp">
                 <img src="https://beedesign.com.vn/wp-content/uploads/2020/08/thiet-ke-logo-chu-b-brew.png"
@@ -16,19 +16,21 @@
             </a>
         </div>
         <div class="col-sm-8">
-            <p class="card-text">Đuổi theo đam mê, thành công sẽ đuổi theo bạn</p>
+            <h3 class="card-text">"Đuổi theo đam mê, thành công sẽ đuổi theo bạn"</h3>
         </div>
         <div class="col-sm-2">
-            <div class="card text-dark bg-info ">
-                <div class="card-body">
-                    <h5 class="card-title">Phan Phước Đại</h5>
+            <div class="card text-success bg-primary border border-danger">
+                <div class="card-body text-white">
+                    <h4 class="card-text">C0522G1</h4>
+                    <h5 class="card-text">Phan Phước Đại</h5>
+
                 </div>
             </div>
         </div>
     </div>
     <div class="row  p-0 text-white text-center">
         <nav class="navbar navbar-expand-lg bg-info text-bg-dark">
-            <div class="col-2 ">
+            <div class="col-sm-2 ">
                 <a class="navbar-brand m-1" href="index.jsp">
                     Home
                 </a>
@@ -38,7 +40,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="col-7 collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="col-sm-7 collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto ms-5 mb-lg-0">
                     <li class="nav-item dropdown m-1 ">
                         <a class="nav-link dropdown-toggle navbar-brand" href="#" role="button"
@@ -86,15 +88,15 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-3 navbar-nav me-auto ms-5 mb-lg-0">
+            <div class="col-sm-3 navbar-nav me-auto ms-5 mb-lg-0">
 
                 <form>
                     <div class="row">
-                        <div class="col-9">
+                        <div class="col-sm-9">
                             <input class="form-control " type="text" name="countrySearch" placeholder="Search"
                                    aria-label="Search">
                         </div>
-                        <div class="col-3">
+                        <div class="col-sm-3">
                             <input class="btn btn-success" type="submit" name="action" value="search">
                         </div>
                     </div>

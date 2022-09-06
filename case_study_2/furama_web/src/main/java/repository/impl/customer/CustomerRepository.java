@@ -48,8 +48,9 @@ public class CustomerRepository implements ICustomerRepository {
     @Override
     public Map<Integer, Customer> findAll(String sortByName) {
         Map<Integer, Customer> customers = new HashMap<>();
+        Connection con = ConnectionDataBase.getConnection();
         try {
-            Connection con = ConnectionDataBase.getConnection();
+
             PreparedStatement pre = con.prepareStatement(SELECT_ALL);
             ResultSet rs = pre.executeQuery();
             Customer customer;
@@ -71,6 +72,12 @@ public class CustomerRepository implements ICustomerRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return customers;
     }
@@ -78,8 +85,9 @@ public class CustomerRepository implements ICustomerRepository {
     @Override
     public Map<Integer, Customer> find(String nameCustomer,  String customerTypeName,String addressCustomer, String sortByName) {
         Map<Integer, Customer> customers = new HashMap<>();
+        Connection con = ConnectionDataBase.getConnection();
         try {
-            Connection con = ConnectionDataBase.getConnection();
+
             PreparedStatement pre = con.prepareStatement(SELECT_BY_SEARCH);
             pre.setString(1, "%"+(nameCustomer==null?"":nameCustomer)+"%");
             pre.setString(2, "%"+(addressCustomer==null?"":addressCustomer)+"%");
@@ -104,6 +112,12 @@ public class CustomerRepository implements ICustomerRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return customers;
     }
@@ -111,8 +125,9 @@ public class CustomerRepository implements ICustomerRepository {
     @Override
     public Customer findByID(int id) {
         Customer customer;
+        Connection con = ConnectionDataBase.getConnection();
         try {
-            Connection con = ConnectionDataBase.getConnection();
+
             PreparedStatement pre = con.prepareStatement(SELECT_BY_ID);
             pre.setInt(1, id);
 
@@ -136,6 +151,12 @@ public class CustomerRepository implements ICustomerRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -149,6 +170,12 @@ public class CustomerRepository implements ICustomerRepository {
             return pre.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -172,6 +199,12 @@ public class CustomerRepository implements ICustomerRepository {
             return pre.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -196,6 +229,12 @@ public class CustomerRepository implements ICustomerRepository {
             return pre.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

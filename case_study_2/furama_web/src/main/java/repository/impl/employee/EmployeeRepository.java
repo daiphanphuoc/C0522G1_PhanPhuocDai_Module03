@@ -63,8 +63,9 @@ public class EmployeeRepository implements IEmployeeRepository<Employee> {
     public Map<Integer, Employee> findAll(String sortByName) {
         Map<Integer, Employee> employeeMap = new HashMap<>();
         Employee employee;
+        Connection con = ConnectionDataBase.getConnection();
         try {
-            Connection con = ConnectionDataBase.getConnection();
+
             PreparedStatement pre = con.prepareStatement(SELECT);
 
 
@@ -99,6 +100,12 @@ public class EmployeeRepository implements IEmployeeRepository<Employee> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return employeeMap;
     }
@@ -107,8 +114,9 @@ public class EmployeeRepository implements IEmployeeRepository<Employee> {
     public Map<Integer, Employee> find(String name, String phone, String address, String sortByName) {
         Map<Integer, Employee> employeeMap = new HashMap<>();
         Employee employee;
+        Connection con = ConnectionDataBase.getConnection();
         try {
-            Connection con = ConnectionDataBase.getConnection();
+
             PreparedStatement pre = con.prepareStatement(SELECT_SEARCH);
             pre.setString(1, "%" + (name==null?"":name) + "%");
             pre.setString(2, "%" + (phone==null?"":phone) + "%");
@@ -146,6 +154,12 @@ public class EmployeeRepository implements IEmployeeRepository<Employee> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return employeeMap;
     }
@@ -153,8 +167,9 @@ public class EmployeeRepository implements IEmployeeRepository<Employee> {
     @Override
     public Employee findByID(int id) {
         Employee employee;
+        Connection con = ConnectionDataBase.getConnection();
         try {
-            Connection con = ConnectionDataBase.getConnection();
+
             PreparedStatement pre = con.prepareStatement(SELECT_BY_ID);
             pre.setInt(1, id);
 
@@ -188,6 +203,12 @@ public class EmployeeRepository implements IEmployeeRepository<Employee> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -201,6 +222,12 @@ public class EmployeeRepository implements IEmployeeRepository<Employee> {
             return pre.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return false;
@@ -208,9 +235,9 @@ public class EmployeeRepository implements IEmployeeRepository<Employee> {
 
     @Override
     public boolean update(@NotNull Employee employee) {
-        Connection connection = ConnectionDataBase.getConnection();
+        Connection con = ConnectionDataBase.getConnection();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE);
+            PreparedStatement preparedStatement = con.prepareStatement(UPDATE);
             preparedStatement.setString(1, employee.getName());
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             String date = df.format(employee.getBirthday());
@@ -230,15 +257,21 @@ public class EmployeeRepository implements IEmployeeRepository<Employee> {
             return (num == 1);
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
 
     @Override
     public boolean insert(@NotNull Employee employee) {
-        Connection connection = ConnectionDataBase.getConnection();
+        Connection con = ConnectionDataBase.getConnection();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT);
+            PreparedStatement preparedStatement = con.prepareStatement(INSERT);
             preparedStatement.setString(1, employee.getName());
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             String date = df.format(employee.getBirthday());
@@ -257,6 +290,12 @@ public class EmployeeRepository implements IEmployeeRepository<Employee> {
             return (num == 1);
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

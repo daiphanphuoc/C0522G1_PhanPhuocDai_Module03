@@ -17,6 +17,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <style>
+        * {
+            box-sizing: border-box;
+        }
         a {
             text-decoration: none;
         }
@@ -31,25 +34,28 @@
 
 <div class="container-fluid">
     <div class="row">
-        <jsp:include page="/view/header.jsp"/>
+        <div class="col-sm-12">
+            <jsp:include page="/view/header.jsp"/>
+        </div>
+
     </div>
 
     <div class="row ">
-        <div class="col-sm-3">
+        <div class="col-sm-3 ">
             <jsp:include page="/view/left.jsp"/>
         </div>
 
 
-        <div class="col-sm-9">
-            <div>
-                <img width="100%" height="600" id="img" onclick="changeImage()"
+        <div class="col-sm-9 ">
+            <div class="row ">
+                <img width="100%"  id="img" onclick="changeImage()"
                      src="https://furamavietnam.com/wp-content/uploads/2018/11/Vietnam_Danang_Furama_Resort_Exterior_Courtyard-Night.jpg"
                      alt="">
             </div>
             <script>
-                var index = 1;
+                let index = 1;
                 changeImage = function () {
-                    var imgs = ["https://furamavietnam.com/wp-content/uploads/2018/11/Vietnam_Danang_Furama_Resort_Exterior_Courtyard-Night.jpg",
+                    const imgs = ["https://furamavietnam.com/wp-content/uploads/2018/11/Vietnam_Danang_Furama_Resort_Exterior_Courtyard-Night.jpg",
                         "https://furamavietnam.com/wp-content/uploads/2018/11/Vietnam_Danang_Furama_Resort_Exterior-Lobby.jpg",
                         "https://furamavietnam.com/wp-content/uploads/2018/11/Vietnam_Danang_Furama_Resort_Exterior-Lagoon-Pool.jpg"];
                     document.getElementById('img').src = imgs[index];
@@ -63,7 +69,10 @@
         </div>
     </div>
     <div class="row">
-        <%@include file="/view/footer.jsp" %>
+        <div class="col-sm-12">
+            <jsp:include page="/view/footer.jsp" />
+        </div>
+
     </div>
 
 </div>

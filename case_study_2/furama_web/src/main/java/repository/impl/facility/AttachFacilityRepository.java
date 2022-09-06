@@ -54,6 +54,12 @@ public class AttachFacilityRepository implements IAttachFacilityRepository<Attac
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return facilityMap;
     }
@@ -75,6 +81,12 @@ public class AttachFacilityRepository implements IAttachFacilityRepository<Attac
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -88,6 +100,12 @@ public class AttachFacilityRepository implements IAttachFacilityRepository<Attac
             return pre.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -105,6 +123,12 @@ public class AttachFacilityRepository implements IAttachFacilityRepository<Attac
             return pre.executeUpdate()>0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
@@ -121,6 +145,12 @@ public class AttachFacilityRepository implements IAttachFacilityRepository<Attac
             return pre.executeUpdate()>0;
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

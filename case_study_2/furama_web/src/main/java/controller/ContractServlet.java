@@ -1,10 +1,13 @@
 package controller;
 
 import model.business.Contract;
+import model.business.ContractDetail;
+import model.dto.ContractDetailDTO;
 import model.facility.Facility;
 import model.person.*;
 import service.impl.business.ContractService;
 import service.impl.customer.CustomerService;
+import service.impl.dto.ContractDetailDTOService;
 import service.impl.employee.DivisionService;
 import service.impl.employee.EducationDegreeService;
 import service.impl.employee.EmployeeService;
@@ -44,8 +47,33 @@ public class ContractServlet extends HttpServlet {
             case "search":
                 searchContract(request, response);
                 break;
+            case "modal":
+                findContract(request, response);
+                break;
             default:
                 showContract(request, response);
+        }
+    }
+
+    private void findContract(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/contract/list.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        List<Contract> contracts = new ArrayList<>(ContractService.getInstance().findAll().values());
+        List<Facility> facilityList = new ArrayList<>(FacilityService.getInstance().findAll("").values());
+        List<Customer> customerList = new ArrayList<>(CustomerService.getInstance().findAll("").values());
+        List<Employee> employeeList = new ArrayList<>(EmployeeService.getInstance().findAll("").values());
+        List<ContractDetailDTO> contractDetailDTOS = new ArrayList<>
+                (ContractDetailDTOService.getInstance().find(id).values());
+        request.setAttribute("modal", "showAttachFacility");
+        request.setAttribute("contractList", contracts);
+        request.setAttribute("facilityList", facilityList);
+        request.setAttribute("customerList", customerList);
+        request.setAttribute("employeeList", employeeList);
+        request.setAttribute("contractDetailDTOS", contractDetailDTOS);
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -123,10 +151,31 @@ public class ContractServlet extends HttpServlet {
         } else {
             request.setAttribute("msg", "Insert Contract's information failure!");
         }
-        showContract(request,response);
+        showContract(request, response);
     }
 
     private void update(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date start = null;
+        Date end = null;
+        try {
+            start = df.parse(request.getParameter("startDay"));
+            end = df.parse(request.getParameter("endDay"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        double deposit = Double.parseDouble(request.getParameter("deposit"));
+        int employee = Integer.parseInt(request.getParameter("employee"));
+        int customer = Integer.parseInt(request.getParameter("customer"));
+        int facility = Integer.parseInt(request.getParameter("facility"));
+        boolean check = ContractService.getInstance().update(new Contract(id, start, end, deposit, customer, employee, facility));
+        if (check) {
+            request.setAttribute("msg", "Insert Contract's information successfully!");
+        } else {
+            request.setAttribute("msg", "Insert Contract's information failure!");
+        }
+        showContract(request, response);
     }
 
     private void showContract(HttpServletRequest request, HttpServletResponse response) {
@@ -136,15 +185,17 @@ public class ContractServlet extends HttpServlet {
         List<Facility> facilityList = new ArrayList<>(FacilityService.getInstance().findAll("").values());
         List<Customer> customerList = new ArrayList<>(CustomerService.getInstance().findAll("").values());
         List<Employee> employeeList = new ArrayList<>(EmployeeService.getInstance().findAll("").values());
+        List<ContractDetailDTO> contractDetailDTOS = new ArrayList<>
+                (ContractDetailDTOService.getInstance().findAll().values());
+
         request.setAttribute("contractList", contracts);
         request.setAttribute("facilityList", facilityList);
         request.setAttribute("customerList", customerList);
         request.setAttribute("employeeList", employeeList);
+        request.setAttribute("contractDetailDTOS", contractDetailDTOS);
         try {
             requestDispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }

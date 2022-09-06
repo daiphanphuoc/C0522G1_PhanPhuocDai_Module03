@@ -89,6 +89,12 @@ public class FacilityRepository implements IFacilityRepository<Facility> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return facilityMap;
     }
@@ -137,6 +143,12 @@ public class FacilityRepository implements IFacilityRepository<Facility> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return facilityMap;
     }

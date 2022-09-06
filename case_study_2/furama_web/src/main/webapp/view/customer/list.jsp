@@ -54,7 +54,7 @@
                     </button>
                 </a>
                 --%>
-                <input hidden type="text" id="success" value="${msg}">
+
                 <fieldset>
                     <form action="/customer" method="get">
                         <input hidden type="text" name="action" value="search">
@@ -184,13 +184,13 @@
 </div>
 
 
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
         <form action="/customer" method="get">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">You Want To Delete?</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">You Want To Delete?</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
@@ -210,12 +210,11 @@
     </div>
 </div>
 
-
+<input hidden type="text" id="success" value="${msg}">
 <button type="button" id="modalSuccess" hidden class="btn btn-primary" data-bs-toggle="modal"
         data-bs-target="#messModal">
     Launch demo modal
 </button>
-
 <div class="modal fade" id="messModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -274,8 +273,6 @@
 <script src="/datatables/js/jquery.dataTables.min.js"></script>
 <script src="/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script>
-
-
     $(document).ready(function () {
         $('#customerTable').dataTable({
             "dom": 'lrtip',

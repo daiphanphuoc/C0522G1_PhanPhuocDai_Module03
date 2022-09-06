@@ -43,6 +43,12 @@ public class CustomerTypeRepository implements ICustomerTypeRepository<CustomerT
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return customerTypeMap;
     }
@@ -62,6 +68,12 @@ public class CustomerTypeRepository implements ICustomerTypeRepository<CustomerT
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return customerType;
     }

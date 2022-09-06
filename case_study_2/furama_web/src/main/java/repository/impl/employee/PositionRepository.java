@@ -46,6 +46,12 @@ public class PositionRepository implements IPositionRepository<Position> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return positionMap;
     }
@@ -64,6 +70,12 @@ public class PositionRepository implements IPositionRepository<Position> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }

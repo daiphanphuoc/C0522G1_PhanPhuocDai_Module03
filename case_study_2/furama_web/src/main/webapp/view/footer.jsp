@@ -7,7 +7,7 @@
 --%>
 <%@ page language="java"  pageEncoding="UTF-8"%>
 
-<div>
+<div class="container-fluid">
     <p style="text-align: center;background-color: #7abaff">
         Footer Furama
     </p>
